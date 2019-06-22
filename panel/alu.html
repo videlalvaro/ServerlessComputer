@@ -1,0 +1,158 @@
+<html>
+
+<head>
+  <title>Serverless Computer</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+  <style>
+    .slide-fade-enter-active, .slide-fade-leave-active {
+      transition: all 1s ease;
+    }
+    .slide-fade-enter, .slide-fade-leave-to {
+      height: 0px;
+      overflow-y: hidden;
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <h3>ServerlessComputer</h3>
+    <p>This is a 16-bit ALU's running in the cloud. Each logic gate is implemented as an <a href="https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-overview?WT.mc_id=serverlesscomputer-website-alvidela">Azure Function</a></p>
+    <p>Set the 16-bit inputs <code>X</code> and <code>Y</code> below and submit your operations so they can be on the serverless ALU.</p>
+    <form v-on:submit.prevent="calculate">
+      <div id='x-input' class="form-check form-check-inline">
+        <label class="form-check-label">X&nbsp;</label>
+        <input v-for="n in 16" type="checkbox" v-bind:id="'x-' + n" v-bind:value="n" v-model="checkedX">
+      </div>
+      <br>
+      <div id='y-input' class="form-check form-check-inline">
+          <label class="form-check-label">Y&nbsp;</label>
+          <input v-for="n in 16" type="checkbox" v-bind:id="'y-' + n" v-bind:value="n" v-model="checkedY">
+      </div>
+      <br>
+      <span>Flags&nbsp;</span>
+      <div v-for="n in 6" id='flags' class="form-check form-check-inline">
+          <input type="checkbox" v-bind:id="'flags-' + n" v-bind:value="n" v-model="flags">
+          <label class="form-check-label" v-bind:for="'flags-' + n">{{ flagLabels[n] }}</label>
+      </div>
+      <br><br>
+      <button type="submit" class="btn btn-primary">RUN</button>
+    </form>
+    <span>Output: {{ output }}</span>
+    <br>
+    <div id="help" class="container">
+      <h3>Help</h3>
+      <dl class="row">
+          <dt class="col-sm-1">X</dt>
+          <dd class="col-sm-9">The X 16-bit input</dd>
+
+          <dt class="col-sm-3">Y</dt>
+          <dd class="col-sm-9">The Y 16-bit input</dd>
+
+          <dt class="col-sm-3">Flags</dt>
+          <dd class="col-sm-9">The ALU takes the following flags</dd>
+
+          <dt class="col-sm-3">zx</dt>
+          <dd class="col-sm-9">zero the x input</dd>
+
+          <dt class="col-sm-3">nx</dt>
+          <dd class="col-sm-9">negate the x input</dd>
+
+          <dt class="col-sm-3">zy</dt>
+          <dd class="col-sm-9">zero the y input</dd>
+      
+          <dt class="col-sm-3">ny</dt>
+          <dd class="col-sm-9">negate the y input</dd>
+
+          <dt class="col-sm-3">op</dt>
+          <dd class="col-sm-9"> function code: 1 for <code>X + Y</code>, 0 for <code>X & Y</code></dd>
+
+          <dt class="col-sm-3">no</dt>
+          <dd class="col-sm-9">negate output</dd>
+      </dl>
+    </div>
+    <section id="footer">
+        <div class="container">
+            Running on <a href="https://azure.microsoft.com/free/?WT.mc_id=serverlesscomputer-website-alvidela">Azure</a>
+        </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@aspnet/signalr@1.1.2/dist/browser/signalr.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+
+  <script>
+    const data = {
+      username: '',
+      newMessage: '',
+      messages: [],
+      ready: false,
+      checkedX: [],
+      checkedY: [],
+      output: "",
+      flags: [],
+      flagLabels: {
+        1: 'zx',
+        2: 'nx',
+        3: 'zy',
+        4: 'ny',
+        5: 'op',
+        6: 'no'
+      }
+    };
+
+    const app = new Vue({
+      el: '#app',
+      data: data,
+      methods: {
+        calculate: function () {
+          console.log(this.checkedX, this.checkedY, this.flags)
+          sendMessage(this.checkedX, this.checkedY, this.flags)
+        }
+      }
+    });
+
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl(`/api`)
+      .configureLogging(signalR.LogLevel.Information)
+      .build();
+
+    connection.on('newMessage', newMessage);
+    connection.onclose(() => console.log('disconnected'));
+
+    console.log('connecting...');
+    connection.start()
+      .then(() => data.ready = true)
+      .catch(console.error);
+
+    function sendMessage(x, y, flags) {
+      var xBin = toBin(x, 16);
+      var yBin = toBin(y, 16);
+      var flagsBin = toBin(flags, 6);
+
+      console.log(`x: ${xBin}, y: ${yBin}, op: ${flagsBin}`);
+
+      return axios.post(`/api/panel`, {
+        x: xBin.toString(2),
+        y: yBin.toString(2),
+        op: flagsBin.toString(2)
+      }).then(resp => resp.data);
+    }
+
+    function toBin(arr, bits) {
+      var res = 0;
+      for (var i=0; i<arr.length; i++) {
+        res |= 1 << (bits - arr[i])
+      }
+      return res.toString(2);
+    }
+
+    function newMessage(message) {
+      data.output = message.split("");
+    }
+  </script>
+</body>
+
+</html>

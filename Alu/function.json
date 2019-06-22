@@ -1,0 +1,15 @@
+{
+  "bindings": [
+    {
+      "name": "context",
+      "type": "orchestrationTrigger",
+      "direction": "in"
+    },
+    {
+      "type": "signalR",
+      "name": "signalRMessages",
+      "hubName": "serverlessComputer",
+      "direction": "out"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "ServerlessComputer",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@aspnet/signalr": "^1.1.4",
+    "durable-functions": "^1.2.2",
+    "hdl-js": "0.0.72"
+  },
+  "devDependencies": {}
+}
