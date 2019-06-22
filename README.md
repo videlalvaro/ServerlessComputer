@@ -27,6 +27,8 @@ no: negate output
 
 The ALU returns a 16-bit output with the result of the desired operation.
 
+See it in action here: [https://alvidela-alu.azurewebsites.net/api/panel](https://alvidela-alu.azurewebsites.net/api/panel)
+
 ## How to call the ALU ##
 
 In the future we want to have a nice frontend for the ALU, but for now we can work with curl:
