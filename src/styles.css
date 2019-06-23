@@ -130,7 +130,6 @@ body {
   border: solid 1px white;
   width: 100%;
   height: 100%;
-  opacity: 0.5;
   margin-left: 20px;
   padding: 1em;
   position: relative;
@@ -302,7 +301,6 @@ body {
   border: solid 1px white;
   border-radius: 10px;
   margin-top: 20px;
-  opacity: 0.4;
 }
 
 .panel-row {
@@ -314,7 +312,22 @@ body {
   flex: 1;
   padding: 1em;
   position: relative;
-  overflow: hidden;
+}
+
+.panel-row form {
+  width: 100%;
+}
+
+.panel-row .side,
+.panel-row .main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-row .side {
+  border-left: solid 1px white;
+  padding: 20px;
 }
 
 .panel-row {
@@ -326,4 +339,27 @@ body {
 
 .panel-row:last-child {
   margin-bottom: 0;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  text-transform: uppercase;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  margin-right: 10px;
+  background: transparent;
+  border-radius: 10px;
+  transition: background-color 0.2s ease 0s;
+  max-width: 100px;
+}
+
+.main .form-check {
+  margin-bottom: 20px;
 }
