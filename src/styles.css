@@ -132,6 +132,27 @@ body {
   height: 100%;
   opacity: 0.5;
   margin-left: 20px;
+  padding: 1em;
+  position: relative;
+}
+
+.panel-header .rest p {
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.title {
+  position: absolute;
+  top: 2px;
+  margin-top: -10px;
+  padding: 0 15px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  font-family: 'Raleway', Arial, sans-serif;
+  background-color: black;
+  display: inline-block;
+  font-weight: normal;
 }
 
 .panel-header small {
@@ -291,10 +312,16 @@ body {
   border-radius: 10px;
   border: solid 1px white;
   flex: 1;
+  padding: 1em;
+  position: relative;
+  overflow: hidden;
 }
 
 .panel-row {
   margin-bottom: 20px;
+}
+
+.panel-row .title {
 }
 
 .panel-row:last-child {
