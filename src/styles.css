@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.alu {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: transparent;
+  overflow: hidden;
+  font-family: 'Righteous', cursive;
+  color: white;
+  font-size: 16px;
+  background-color: #222222;
+}
+
+.noise-bg {
+  position: absolute;
+  z-index: 0;
+  height: 100vh;
+  width: 100%;
+  opacity: 1;
+  background: linear-gradient(rgba(10, 10, 10, 0.2), rgba(0, 0, 0, 0.2)),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      black 3px,
+      black 3px
+    );
+}
+
+.alu,
+.panel {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  background-color: black;
+  width: 80%;
+  height: 80%;
+  padding: 2rem;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.wooden-case {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-image: url('https://images.unsplash.com/photo-1546727483-398533902b75?ixlib=rb-1.2.1&auto=format&fit=crop&w=1319&q=80');
+  -webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+}
+
+.panel {
+  padding: 2em;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  background-color: black;
+  opacity: 0.98;
+  z-index: 5;
+  border-radius: 4px;
+}
+
+.panel-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.panel-header .logo {
+  flex: 0;
+  flex-basis: 550px;
+  background-color: #c4b6ad;
+  padding: 2em;
+  position: relative;
+  border-radius: 4px;
+  border: solid 1px black;
+}
+
+.panel-header .rest {
+  flex: 1;
+  border-radius: 3px;
+  border: solid 1px white;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  margin-left: 20px;
+}
+
+.panel-header small {
+  color: black;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.panel-header h1.heading {
+  color: #ffffff;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  z-index: 5;
+  position: relative;
+}
+
+.panel-header .echo {
+  position: absolute;
+  top: 25px;
+}
+
+.panel-header .echo span.heading {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  display: block;
+  line-height: 5px;
+}
+
+.panel-header .echo > span.heading:nth-child(8) {
+  color: #faca08;
+}
+
+.panel-header .echo > span.heading:nth-child(7) {
+  color: #f9a41e;
+}
+
+.panel-header .echo > span.heading:nth-child(6) {
+  color: #f67d1f;
+}
+
+.panel-header .echo > span.heading:nth-child(5) {
+  color: #eb1c25;
+}
+
+.panel-header .echo > span.heading:nth-child(4) {
+  color: #d51084;
+}
+
+.panel-header .echo > span.heading:nth-child(3) {
+  color: #872683;
+}
+
+.panel-header .echo > span.heading:nth-child(2) {
+  color: #343083;
+}
+
+.panel-header .echo > span.heading:nth-child(1) {
+  color: #20427f;
+}
+
+.toaster {
+  position: relative;
+  -webkit-filter: contrast(1.5) brightness(0.9);
+  filter: contrast(1.5) brightness(0.9);
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.toaster:after,
+.toaster:before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.toaster img {
+  width: 100%;
+  z-index: 1;
+}
+
+.toaster:before {
+  z-index: 2;
+}
+
+.toaster:after {
+  z-index: 3;
+}
+
+.toaster::after {
+  background: -webkit-radial-gradient(circle, #804e0f, #3b003b);
+  background: radial-gradient(circle, #804e0f, #3b003b);
+  mix-blend-mode: screen;
+}
+
+.panel-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 2em;
+  border: solid 1px white;
+  border-radius: 3px;
+  margin-top: 20px;
+  opacity: 0.4;
+}
+
+.panel-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-radius: 3px;
+  border: solid 1px white;
+  flex: 1;
+}
+
+.panel-row {
+  margin-bottom: 20px;
+}
+
+.panel-row:last-child {
+  margin-bottom: 0;
+}
