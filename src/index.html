@@ -16,7 +16,12 @@
 					<div class="panel">
 						<div class="panel-header">
 							<div class="logo">
-								<h1 class="heading">Serverless Computer</h1>
+							 	<h1 class="heading">Serverless Computer</h1>
+								<small class="sub-heading">
+									<div class="line"></div>
+									<span>ALU using Azure Functions as logic gates<span>
+								</small>
+								<!-- <h1 class="heading">Serverless Computer</h1>
 								<div class="echo">
 									<span class="heading">Serverless Computer</span>
 									<span class="heading">Serverless Computer</span>
@@ -25,11 +30,11 @@
 									<span class="heading">Serverless Computer</span>
 									<span class="heading">Serverless Computer</span>
 									<span class="heading">Serverless Computer</span>
-								</div>
-								<small>
+								</div> -->
+								<!-- <small>
 									<div class="line"></div>
 									<span>ALU using Azure Functions as logic gates<span>
-								</small>
+								</small> -->
 							</div>
 							<div class="rest">
 								<h3 class="title">Description</h3>
@@ -38,10 +43,29 @@
 							</div>
 					</div>
 					<div class="panel-container">
+
 						<div class="panel-row">
 								<div class="main">
 									<h3 class="title">COMPUTER</h3>
-									<div id="x-input" class="form-check form-check-inline">
+									<div class="grid-led">
+										<div class="led"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+										<div class="led active"><div class="light"></div></div>
+									</div>
+									<div id="x-input" class="grid-x">
 										<label class="form-check-label">X&nbsp;</label>
 										<input type="checkbox" id="x-1" value="1">
 										<input type="checkbox" id="x-2" value="2">
@@ -60,8 +84,37 @@
 										<input type="checkbox" id="x-15" value="15">
 										<input type="checkbox" id="x-16" value="16">
 									</div>
-									<div id="y-input" class="form-check form-check-inline">
-										<label class="form-check-label">Y&nbsp;</label>
+									<div id="y-input" class="grid-y">
+										<label class="form-check-label">Y</label>
+
+										<div class="form-field">
+
+											<span class="s">
+												<span class="s-border1">
+													<span class="s-border2">
+														<input id="s1" type="checkbox" checked />
+														<span class="led led--red">
+															<span class="led-border">
+																<span class="led-light">
+																	<span class="led-glow"></span>
+																</span>
+															</span>
+														</span>
+														<label for="s1"></label>
+														<span class="s-top"></span>
+														<span class="s-shadow"></span>
+														<span class="s-handle"></span>
+														<span class="s-handle-left"></span>
+														<span class="s-handle-right"></span>
+														<span class="s-handle-top"></span>
+														<span class="s-handle-bottom"></span>
+														<span class="s-handle-base"></span>
+													</span>
+												</span>
+											</span>
+										</div>
+
+										<!--
 										<input type="checkbox" id="y-1" value="1">
 										<input type="checkbox" id="y-2" value="2">
 										<input type="checkbox" id="y-3" value="3">
@@ -78,9 +131,7 @@
 										<input type="checkbox" id="y-14" value="14">
 										<input type="checkbox" id="y-15" value="15">
 										<input type="checkbox" id="y-16" value="16">
-									</div>
-									<div class="grid">
-										<div class="led active"><div class="light"></div></div>
+										-->
 									</div>
 									<button type="submit" class="btn btn-primary">RUN</button>
 								</div>
@@ -113,7 +164,9 @@
 									</div>
 								</div>
 						</div>
+					<!--
 						<div class="panel-row">
+
 							<h3 class="title">Help</h3>
 
 							<div class="main">
@@ -132,6 +185,7 @@
 								<dt class="col-sm-3">nx</dt>
 								<dd class="col-sm-9">negate the x input</dd> <dt class="col-sm-3">zy</dt>
 								</ul>
+
 							</div>
 							<div class="side">
 
@@ -142,7 +196,9 @@
 								<dt class="col-sm-3">no</dt>
 								<dd class="col-sm-9">negate output</dd>
 							</div>
+
 						</div>
+							-->
 					</div>
 				</div>
 		</div>
