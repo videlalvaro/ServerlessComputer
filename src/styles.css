@@ -393,13 +393,14 @@ a {
   flex-direction: row;
 }
 
-.grid-y {
+.grid-y,
+.grid-x {
   font-size: 3px;
 }
 
 .form-field {
   position: relative;
-  margin: 10em 2em;
+  display: inline-block;
 }
 
 /** Switch **/
@@ -589,7 +590,7 @@ a {
 .led {
   position: absolute;
   top: -50px;
-  border-radius: 1.4em;
+  border-radius: 10em;
 }
 
 .led-border {
@@ -666,8 +667,12 @@ a {
   translate: transformX(-50%);
 }
 
+.s.s--input .led--red:after {
+  content: 'INPUT';
+  left: -25%;
+}
+
 .led--red {
-  bottom: -5em;
   border-top: 0.1em solid rgba(237, 28, 36, 0.2);
   border-bottom: 0.1em solid rgba(255, 255, 255, 0.25);
   -webkit-box-shadow: 0 0 3em rgb(237, 28, 36);
