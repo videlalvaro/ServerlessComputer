@@ -5,12 +5,17 @@
       "name": "req",
       "type": "httpTrigger",
       "direction": "in",
-      "methods": ["get"]
+      "methods": ["post"]
     },
     {
-      "name": "$return",
       "type": "http",
-      "direction": "out"
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
     }
   ]
 }
