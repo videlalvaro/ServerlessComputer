@@ -39,7 +39,6 @@ body {
     #ff00d922,
     #000000
   );
-
   text-transform: uppercase;
 }
 
@@ -95,17 +94,17 @@ body {
 }
 
 .panel {
-  padding: 1.2em;
   flex-direction: column-reverse;
   justify-content: flex-start;
   position: relative;
-  background-color: #080808;
+  background-color: rgb(8, 8, 8);
   opacity: 1;
   z-index: 5;
+  filter: drop-shadow(rgba(0, 0, 0, 0.25) 16px 16px 20px);
+  box-shadow: rgb(0, 0, 0) 0px 1px 1px 1px inset,
+    rgba(255, 255, 255, 0.35) 2px -2px 1px inset;
+  padding: 1.2em;
   border-radius: 10px;
-  filter: drop-shadow(16px 16px 20px rgba(0, 0, 0, 0.25));
-  box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 1),
-    inset 2px -2px 1px rgba(255, 255, 255, 0.35);
 }
 
 .panel-header {

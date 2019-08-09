@@ -1,9 +1,11 @@
 {
-  "name": "ServerlessComputer",
+  "name": "serverlesscomputer",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"No tests yet...\""
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "@aspnet/signalr": "^1.1.4",
@@ -11,7 +13,8 @@
     "hdl-js": "0.0.72",
     "next": "^8.1.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {}
 }
