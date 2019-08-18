@@ -200,6 +200,11 @@ function Console() {
                   Set the 16-bit inputs X and Y below and submit your operations
                   so they can be on the serverless ALU.
                 </p>
+                <p>
+                  <span>
+                    built by @old_sound &<a href="curcio.be">@okbel</a>
+                  </span>
+                </p>
               </div>
             </div>
           </div>

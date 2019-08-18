@@ -10,7 +10,7 @@ Using them as building blocks we implemented a [HalfAdder](https://github.com/vi
 
 The _chips_ are wired together using [Orchestrator Functions](https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-types-features-overview?WT.mc_id=serverlesscomputer-GitHub-alvidela#orchestrator-functions), so for example the [XOR](https://github.com/videlalvaro/ServerlessComputer/blob/master/Xor/index.js) chip calls a [Not](https://github.com/videlalvaro/ServerlessComputer/blob/master/Not/index.js) gate, an [And](https://github.com/videlalvaro/ServerlessComputer/blob/master/And/index.js) gate and an [Or](https://github.com/videlalvaro/ServerlessComputer/blob/master/Or/index.js) to calculate its result.
 
-## ALU Features ##
+## ALU Features
 
 The ALU follows the design from the [Nand to Tetris project](https://www.nand2tetris.org). In this case it implements the design from the second chapter of the book.
 
@@ -29,7 +29,7 @@ The ALU returns a 16-bit output with the result of the desired operation.
 
 See it in action here: [https://alvidela-alu.azurewebsites.net/api/panel](https://alvidela-alu.azurewebsites.net/api/panel)
 
-## How to call the ALU ##
+## How to call the ALU
 
 In the future we want to have a nice frontend for the ALU, but for now we can work with curl:
 
@@ -51,12 +51,38 @@ The curl invocation will return a JSON object with a `statusQueryGetUri` key. Us
 curl https://alvidela-alu.azurewebsites.net/runtime/webhooks/durabletask/instances/someinstanceid\?taskHub\=DurableFunctionsHub\&connection\=Storage\&code\=SomeCode
 ```
 
-## Project Goals ##
+## Project Goals
 
 Besides the little joke of implementing a computer like this, the goal is to have it as a project to learn different patterns that can be implemented using [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview?WT.mc_id=serverlesscomputer-GitHub-alvidela).
 
 In the future, expect a series of articles detailing how we put the different building blocks together until we got a fully functioning ALU.
 
-## Acknowledgments ##
+## Development
+
+First, install all the dependencies by running:
+`npm ci`
+
+To run the project for development run the following command:
+
+`npm run dev`
+
+This command will start a server under the port 3000. `http://localhost:3000/`. We're running: React (NextJS).
+
+### Folder Structure
+
+The frontend application files are in `/pages` and `/components`
+
+## Build
+
+The following command will create a `build` folder ready to be deployed.
+
+`npm run build`
+
+## WIP
+
+- Move client app to -> `/src` and order root folder.
+- Code clean-up
+
+## Acknowledgments
 
 Thanks to my colleagues [Maxime Rouiller](https://github.com/MaximRouiller) and [Anthony Chu](https://github.com/anthonychu) for helping me understand Azure Functions.

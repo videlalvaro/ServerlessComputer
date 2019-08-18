@@ -2,11 +2,11 @@
   "$schema": "http://json.schemastore.org/proxies",
   "proxies": {
     "assetsProxy": {
-        "matchCondition": {
-            "route": "/assets/{*path}",
-            "methods": ["GET"]
-        },
-        "backendUri": "https://%WEBSITE_HOSTNAME%/api/panel?file={path}"
+      "matchCondition": {
+        "route": "/assets/{*path}",
+        "methods": ["GET"]
+      },
+      "backendUri": "https://%WEBSITE_HOSTNAME%/api/panel?file={path}"
     },
     "panelProxy": {
       "matchCondition": {
