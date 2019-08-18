@@ -186,6 +186,9 @@ function Root(props) {
                 color: #262626;
                 cursor: pointer;
               }
+              a {
+                color: white;
+              }
             `}</style>
             {props.helpModal && <Help {...props} />}
             <App {...props} />

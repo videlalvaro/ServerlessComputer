@@ -1,4 +1,10 @@
+import Light from '../components/Light';
+
+function Input() {
+  return <input type="checkbox" />;
+}
 function Console() {
+  var dummyData = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1];
   return (
     <div>
       <style jsx global>{`
@@ -156,6 +162,35 @@ function Console() {
           margin-bottom: 20px;
         }
 
+        .grid-output {
+          font-size: 3px;
+        }
+
+        .panel-row {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          border-radius: 10px;
+          border: solid 1px white;
+          flex: 1;
+          padding: 1em;
+          position: relative;
+        }
+
+        .panel-row .side,
+        .panel-row .main {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .panel-row .side {
+          flex: 0;
+          flex-basis: 100px;
+          border-left: solid 1px white;
+          padding: 20px;
+        }
+
         @media (min-width: 900px) {
           .case {
             min-height: 100%;
@@ -175,9 +210,69 @@ function Console() {
           <div className="panel">
             <div className="panel-child panel-output">
               <h3 className="title">OUTPUT</h3>
+              <div className="grid-output">
+                {dummyData.map((v, i) => (
+                  <Light key={i} status={!!v} />
+                ))}
+              </div>
             </div>
             <div className="panel-child panel-computer">
               <h3 className="title">COMPUTER</h3>
+              <div className="panel-row">
+                <div className="main">
+                  <div id="x-input" className="form-check form-check-inline">
+                    <label className="form-check-label">X&nbsp;</label>
+                    {dummyData.map((v, i) => (
+                      <Input key={i} status={!!v} />
+                    ))}
+                  </div>
+                  <div id="y-input" className="form-check form-check-inline">
+                    <label className="form-check-label">Y&nbsp;</label>
+                    {dummyData.map((v, i) => (
+                      <Input key={i} status={!!v} />
+                    ))}
+                  </div>
+                </div>
+                <div className="side">
+                  <span>Flag</span>
+                  <div id="flags" className="form-check form-check-inline">
+                    <input type="checkbox" id="flags-1" value="1" />
+                    <label for="flags-1" className="form-check-label">
+                      zx
+                    </label>
+                  </div>
+                  <div id="flags" className="form-check form-check-inline">
+                    <input type="checkbox" id="flags-2" value="2" />
+                    <label for="flags-2" className="form-check-label">
+                      nx
+                    </label>
+                  </div>
+                  <div id="flags" className="form-check form-check-inline">
+                    <input type="checkbox" id="flags-3" value="3" />
+                    <label for="flags-3" className="form-check-label">
+                      zy
+                    </label>
+                  </div>
+                  <div id="flags" className="form-check form-check-inline">
+                    <input type="checkbox" id="flags-4" value="4" />
+                    <label for="flags-4" className="form-check-label">
+                      ny
+                    </label>
+                  </div>
+                  <div id="flags" className="form-check form-check-inline">
+                    <input type="checkbox" id="flags-5" value="5" />
+                    <label for="flags-5" className="form-check-label">
+                      op
+                    </label>
+                  </div>
+                  <div id="flags" className="form-check form-check-inline">
+                    <input type="checkbox" id="flags-6" value="6" />
+                    <label for="flags-6" className="form-check-label">
+                      no
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="panel-header">
               <div className="logo">
@@ -202,7 +297,7 @@ function Console() {
                 </p>
                 <p>
                   <span>
-                    built by @old_sound &<a href="curcio.be">@okbel</a>
+                    built by @old_sound & <a href="curcio.be">@okbel</a>
                   </span>
                 </p>
               </div>
