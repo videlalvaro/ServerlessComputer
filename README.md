@@ -70,18 +70,13 @@ This command will start a server under the port 3000. `http://localhost:3000/`. 
 
 ### Folder Structure
 
-The frontend application files are in `/pages` and `/components`
+The frontend application files are in `/src`
 
 ## Build
 
-The following command will create a `build` folder ready to be deployed.
+The following command will create a `src/out` folder ready to be deployed.
 
 `npm run build`
-
-## WIP
-
-- Move client app to -> `/src` and order root folder.
-- Code clean-up
 
 ## Acknowledgments
 
