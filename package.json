@@ -4,8 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "next ./src",
-    "build": "next build ./src",
-    "start": "next start ./src"
+    "build": "next build ./src && next export ./src"
   },
   "dependencies": {
     "@aspnet/signalr": "^1.1.4",
