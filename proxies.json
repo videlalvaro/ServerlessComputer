@@ -1,12 +1,19 @@
 {
   "$schema": "http://json.schemastore.org/proxies",
   "proxies": {
-    "assetsProxy": {
+    "nextProxy": {
       "matchCondition": {
-        "route": "/assets/{*path}",
+        "route": "/_next/{*path}",
         "methods": ["GET"]
       },
-      "backendUri": "https://%WEBSITE_HOSTNAME%/api/panel?file={path}"
+      "backendUri": "https://%WEBSITE_HOSTNAME%/api/panel?file=_next/{path}"
+    },
+    "staticProxy": {
+      "matchCondition": {
+        "route": "/static/{*path}",
+        "methods": ["GET"]
+      },
+      "backendUri": "https://%WEBSITE_HOSTNAME%/api/panel?file=static/{path}"
     },
     "panelProxy": {
       "matchCondition": {
