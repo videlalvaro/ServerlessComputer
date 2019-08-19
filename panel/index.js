@@ -2,13 +2,25 @@
 const path = require('path');
 
 module.exports = async function (context, req) {
-    console.log(req)
+    let mimeTypes = {
+        '.html': 'text/html',
+        '.css': 'text/css',
+        '.js': 'text/javascript',
+        '.jpg': 'image/jpeg',
+        '.png': 'image/png',
+        '.ico': 'image/x-icon',
+        '.svg': 'image/svg+xml',
+        '.eot': 'application/vnd.ms-fontobject',
+        '.ttf': 'font/truetype'
+      };
 
     const staticFolder = __dirname + "/../src/out";
     const reqFile = req.query.file || "index.html";
     const file = path.join(staticFolder, reqFile);
+    const extname = path.extname(file);
     const relative = path.relative(staticFolder, path.dirname(file));
     const isSubdir = !relative.startsWith('..') && !path.isAbsolute(relative);
+    const contentType = mimeTypes[extname] || "text/plain";
 
     console.log(`static folder: ${staticFolder}`);
     console.log(`file: ${file}`);
@@ -30,7 +42,7 @@ module.exports = async function (context, req) {
             status: 200,
             body: page,
             headers: {
-                "Content-Type": "text/html"
+                "Content-Type": contentType
             }
         }
     } catch (error) {
