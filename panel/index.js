@@ -4,8 +4,8 @@ const path = require('path');
 module.exports = async function (context, req) {
     console.log(req)
 
-    const staticFolder = __dirname;
-    const reqFile = req.query.file || "alu.html";
+    const staticFolder = __dirname + "/../src/out";
+    const reqFile = req.query.file || "index.html";
     const file = path.join(staticFolder, reqFile);
 
     console.log(`static folder: ${staticFolder}`);
