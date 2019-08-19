@@ -7,11 +7,14 @@ module.exports = async function (context, req) {
     const staticFolder = __dirname + "/../src/out";
     const reqFile = req.query.file || "index.html";
     const file = path.join(staticFolder, reqFile);
+    const relative = path.relative(staticFolder, path.dirname(file));
+    const isSubdir = !relative.startsWith('..') && !path.isAbsolute(relative);
 
     console.log(`static folder: ${staticFolder}`);
     console.log(`file: ${file}`);
+    console.log(`relative: ${relative}`);
 
-    if (path.relative(staticFolder, path.dirname(file)) != "") {
+    if (relative != "" && !isSubdir) {
         return {
             status: 403,
             body: "Forbidden",
