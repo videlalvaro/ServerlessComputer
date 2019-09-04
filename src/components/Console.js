@@ -1,10 +1,13 @@
 import Light from '../components/Light';
 
-function Input() {
-  return <input type="checkbox" />;
+const arr16 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const flagsConfig = ['zx', 'nx', 'zy', 'ny', 'op', 'no'];
+
+function Input({ name, onChange, checked }) {
+  return <input type="checkbox" checked={checked} name={name} onChange={onChange} />;
 }
-function Console() {
-  var dummyData = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1];
+
+function Console(props) {
   return (
     <div>
       <style jsx global>{`
@@ -211,7 +214,7 @@ function Console() {
             <div className="panel-child panel-output">
               <h3 className="title">OUTPUT</h3>
               <div className="grid-output">
-                {dummyData.map((v, i) => (
+                {props.lights.map((v, i) => (
                   <Light key={i} status={!!v} />
                 ))}
               </div>
@@ -220,57 +223,30 @@ function Console() {
               <h3 className="title">COMPUTER</h3>
               <div className="panel-row">
                 <div className="main">
-                  <div id="x-input" className="form-check form-check-inline">
+                  <div id="checkedX" className="form-check form-check-inline">
                     <label className="form-check-label">X&nbsp;</label>
-                    {dummyData.map((v, i) => (
-                      <Input key={i} status={!!v} />
+                    {arr16.map((v, i) => (
+                      <Input name={i} checked={props.checkedX.get(i)} onChange={props.onChange} />
                     ))}
                   </div>
-                  <div id="y-input" className="form-check form-check-inline">
+                  <div id="checkedY" className="form-check form-check-inline">
                     <label className="form-check-label">Y&nbsp;</label>
-                    {dummyData.map((v, i) => (
-                      <Input key={i} status={!!v} />
+                    {arr16.map((v, i) => (
+                      <Input name={i} checked={props.checkedY.get(i)} onChange={props.onChange} />
                     ))}
                   </div>
+                  <button onClick={props.calculate}>Calculate</button>
                 </div>
                 <div className="side">
                   <span>Flag</span>
-                  <div id="flags" className="form-check form-check-inline">
-                    <input type="checkbox" id="flags-1" value="1" />
-                    <label for="flags-1" className="form-check-label">
-                      zx
+                  {flagsConfig.map((v, i) => (
+                    <div id="flags" className="form-check form-check-inline">
+                    <Input name={i} checked={props.flags.get(i)} onChange={props.onChange} />
+                    <label htmlFor="flags-1" className="form-check-label">
+                      {v}
                     </label>
                   </div>
-                  <div id="flags" className="form-check form-check-inline">
-                    <input type="checkbox" id="flags-2" value="2" />
-                    <label for="flags-2" className="form-check-label">
-                      nx
-                    </label>
-                  </div>
-                  <div id="flags" className="form-check form-check-inline">
-                    <input type="checkbox" id="flags-3" value="3" />
-                    <label for="flags-3" className="form-check-label">
-                      zy
-                    </label>
-                  </div>
-                  <div id="flags" className="form-check form-check-inline">
-                    <input type="checkbox" id="flags-4" value="4" />
-                    <label for="flags-4" className="form-check-label">
-                      ny
-                    </label>
-                  </div>
-                  <div id="flags" className="form-check form-check-inline">
-                    <input type="checkbox" id="flags-5" value="5" />
-                    <label for="flags-5" className="form-check-label">
-                      op
-                    </label>
-                  </div>
-                  <div id="flags" className="form-check form-check-inline">
-                    <input type="checkbox" id="flags-6" value="6" />
-                    <label for="flags-6" className="form-check-label">
-                      no
-                    </label>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>

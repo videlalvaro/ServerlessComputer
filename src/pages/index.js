@@ -56,7 +56,7 @@ function App(props) {
   return (
     <div className="wrapper">
       <button onClick={props.showHelpModal}>Show Help</button>
-      <Console />
+      <Console {...props}/>
     </div>
   );
 }
@@ -65,7 +65,7 @@ function Root(props) {
   return (
     <AppConsumer>
       {(props) =>
-        console.log(props) || (
+        (
           <div>
             <style jsx global>{`
               @font-face {
