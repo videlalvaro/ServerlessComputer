@@ -2,7 +2,9 @@
 
 This project implements an ALU (Arithmetic Logic Unit) using [Azure Functions](https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-overview?WT.mc_id=serverlesscomputer-GitHub-alvidela) as logic gates. Yes you read that right, we went over the top and put the server back in serverless.
 
-## How does it work?
+![Serverless Computer](https://github.com/videlalvaro/ServerlessComputer/blob/master/docs/serverless_computer.png)
+
+## How does it work
 
 The logic gates `AND`, `OR` & `NOT`, are implemented using [Activity Functions](https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-types-features-overview?WT.mc_id=serverlesscomputer-GitHub-alvidela#activity-functions).
 
