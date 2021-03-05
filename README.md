@@ -1,16 +1,16 @@
 # The World's First Serverless Computer
 
-This project implements an ALU (Arithmetic Logic Unit) using [Azure Functions](https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-overview?WT.mc_id=serverlesscomputer-GitHub-alvidela) as logic gates. Yes you read that right, we went over the top and put the server back in serverless.
+This project implements an ALU (Arithmetic Logic Unit) using [Azure Functions](https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-overview?WT.mc_id=data-0000-alvidela) as logic gates. Yes you read that right, we went over the top and put the server back in serverless.
 
 ![Serverless Computer](https://github.com/videlalvaro/ServerlessComputer/blob/master/docs/serverless_computer.png)
 
 ## How does it work
 
-The logic gates `AND`, `OR` & `NOT`, are implemented using [Activity Functions](https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-types-features-overview?WT.mc_id=serverlesscomputer-GitHub-alvidela#activity-functions).
+The logic gates `AND`, `OR` & `NOT`, are implemented using [Activity Functions](https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-types-features-overview?WT.mc_id=data-0000-alvidela#activity-functions).
 
 Using them as building blocks we implemented a [HalfAdder](https://github.com/videlalvaro/ServerlessComputer/blob/master/HalfAdder/index.js), a [FullAdder](https://github.com/videlalvaro/ServerlessComputer/blob/master/FullAdder/index.js), and so on to have a basic [16 Bit Adder chip](https://github.com/videlalvaro/ServerlessComputer/blob/master/Add16/index.js), and a [16 bit Incrementer chip](https://github.com/videlalvaro/ServerlessComputer/blob/master/Inc16/index.js).
 
-The _chips_ are wired together using [Orchestrator Functions](https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-types-features-overview?WT.mc_id=serverlesscomputer-GitHub-alvidela#orchestrator-functions), so for example the [XOR](https://github.com/videlalvaro/ServerlessComputer/blob/master/Xor/index.js) chip calls a [Not](https://github.com/videlalvaro/ServerlessComputer/blob/master/Not/index.js) gate, an [And](https://github.com/videlalvaro/ServerlessComputer/blob/master/And/index.js) gate and an [Or](https://github.com/videlalvaro/ServerlessComputer/blob/master/Or/index.js) to calculate its result.
+The _chips_ are wired together using [Orchestrator Functions](https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-types-features-overview?WT.mc_id=data-0000-alvidela#orchestrator-functions), so for example the [XOR](https://github.com/videlalvaro/ServerlessComputer/blob/master/Xor/index.js) chip calls a [Not](https://github.com/videlalvaro/ServerlessComputer/blob/master/Not/index.js) gate, an [And](https://github.com/videlalvaro/ServerlessComputer/blob/master/And/index.js) gate and an [Or](https://github.com/videlalvaro/ServerlessComputer/blob/master/Or/index.js) to calculate its result.
 
 ## ALU Features
 
@@ -55,7 +55,7 @@ curl https://alvidela-alu.azurewebsites.net/runtime/webhooks/durabletask/instanc
 
 ## Project Goals
 
-Besides the little joke of implementing a computer like this, the goal is to have it as a project to learn different patterns that can be implemented using [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview?WT.mc_id=serverlesscomputer-GitHub-alvidela).
+Besides the little joke of implementing a computer like this, the goal is to have it as a project to learn different patterns that can be implemented using [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview?WT.mc_id=data-0000-alvidela).
 
 In the future, expect a series of articles detailing how we put the different building blocks together until we got a fully functioning ALU.
 
